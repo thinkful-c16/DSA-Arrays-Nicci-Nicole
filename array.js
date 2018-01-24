@@ -29,6 +29,19 @@ class Array {
     memory.free(oldPtr);
     this._capacity = size;
   }
+
+  pop() {
+    if (this.length === 0) {
+      throw new Error('Index error');
+    }
+    const value = memory.get(this.ptr + this.length - 1);
+    this.length--;
+    return value;
+  }
+
+  get(index) {
+    return memory.get(this.ptr + index);
+  }
 }
 
 module.exports = Array;
